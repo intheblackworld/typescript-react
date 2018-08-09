@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const devConfig = {}
@@ -10,7 +9,7 @@ module.exports = {
     filename: '[hash:8]-bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  mode: 'development', // 
+  mode: 'development', // webpack4`s devtool: 'source-map'
   devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [

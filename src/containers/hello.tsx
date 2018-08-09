@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { StoreState } from '../store/index.d';
-import { User } from '../store/reducers/user';
-import { change_name, change_gender } from '../store/reducers/user';
+import { User, change_name, change_gender } from '../store/reducers/user';
 
-type Props = {
+// alias `type` cant pass eslint
+interface Props {
   user: User;
   change_name(value: string): void;
   change_gender(value: string): void;
-};
+}
 const chooseBoyOrGirl = (gender: '男' | '女'): string =>
-  gender === '男' ? '女' : '男';
+  (gender === '男' ? '女' : '男');
 export const Hello: React.StatelessComponent<Props> = props => (
   <div>
     <div>
