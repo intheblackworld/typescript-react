@@ -22,6 +22,7 @@ module.exports = {
         flatTernaryExpressions: true
       }
     ],
-    "react/jsx-indent-props": [2, 2]
+    "react/jsx-indent-props": [2, 2], // fix React Component indent bug
+    "semi": ["error", "never"]
   }
 };
