@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { StoreState } from '../store/index.d'
-import { User, change_name, change_gender } from '../store/reducers/user'
+import { StoreState } from '../../store'
+import { User, change_name, change_gender } from '../../store/reducers/user'
+
+import './index.scss'
 
 // alias `type` cant pass eslint
 interface Props {
@@ -15,6 +17,7 @@ export const Hello: React.StatelessComponent<Props> = props => (
   <div>
     <div>
       <button
+        className="test"
         onClick={() => props.change_gender(chooseBoyOrGirl(props.user.gender))}
       >
         更改
