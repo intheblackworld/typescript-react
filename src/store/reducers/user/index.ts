@@ -1,4 +1,5 @@
 import { Action } from 'redux'
+import { fromJS } from 'immutable'
 
 /**
  * contants
@@ -22,6 +23,7 @@ export const change_gender = (value: string): Action & { payload: any } => ({
  * Type
  */
 export interface User {
+  get: any;
   name: string;
   gender: '男' | '女';
 }
@@ -33,6 +35,7 @@ type ActionPayload = {
  * Initial State
  */
 const inititalState: User = {
+  get: '',
   name: '',
   gender: '男'
 }
@@ -41,9 +44,7 @@ const inititalState: User = {
  * Helper
  */
 const change_state = (state: User, key: string, value: string) =>
-  Object.assign({}, state, {
-    [key]: value
-  })
+  fromJS(state).set(key, value)
 
 /**
  * Reducer core
@@ -58,7 +59,7 @@ const userReducer = (
     case CHANGE_GENDER:
       return change_state(state, 'gender', action.payload)
     default:
-      return state
+      return fromJS(state)
   }
 }
 

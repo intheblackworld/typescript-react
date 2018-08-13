@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { StoreState } from '../../store'
 import { User, change_name, change_gender } from '../../store/reducers/user'
 
 import './index.scss'
+import { StoreState } from '../../store'
 
 // alias `type` cant pass eslint
 interface Props {
@@ -18,24 +18,24 @@ export const Hello: React.StatelessComponent<Props> = props => (
     <div>
       <button
         className="test"
-        onClick={() => props.change_gender(chooseBoyOrGirl(props.user.gender))}
+        onClick={() => props.change_gender(chooseBoyOrGirl(props.user.get('gender')))}
       >
         更改
       </button>
       <input
         onChange={e => props.change_name(e.target.value)}
         type="text"
-        value={props.user.name}
+        value={props.user.get('name')}
       />
     </div>
     <div>
-      Hello, {props.user.name} - {props.user.gender}
+      Hello, {props.user.get('name')} - {props.user.get('gender')}
     </div>
   </div>
 )
 
 const mapStateToProps = (state: StoreState) => ({
-  user: state.user
+  user: state.get('user')
 })
 const mapDispatchToProps = {
   change_name,
